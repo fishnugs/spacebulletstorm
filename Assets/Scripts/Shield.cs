@@ -14,6 +14,13 @@ public class Shield: MonoBehaviour
         shieldDirection = "right";
     }
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Projectile") {
+            Destroy(collider.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

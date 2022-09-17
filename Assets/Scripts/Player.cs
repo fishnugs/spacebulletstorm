@@ -14,6 +14,14 @@ public class Player : MonoBehaviour
         controller = gameObject.AddComponent<CharacterController>();
     }
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Projectile") {
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

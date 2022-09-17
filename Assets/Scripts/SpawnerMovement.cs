@@ -6,7 +6,7 @@ public class SpawnerMovement : MonoBehaviour
 {
     private float scaleMovement = 0.05f;
     public Transform spawnerTransform;
-    private float spawnFrequency = 2.0f;
+    private float spawnFrequency = 1.0f;
     public LaserSpawner laserSpawnerScript;
 
     // Start is called before the first frame update
@@ -24,13 +24,6 @@ public class SpawnerMovement : MonoBehaviour
             yield return new WaitForSeconds(spawnFrequency);
             laserSpawnerScript.SpawnLaser();
         }
-    }
-
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        // if (collisionInfo.tag == "projectile") {
-        //     // TODO: Player gets points
-        // }
     }
 
     bool IsInBound()

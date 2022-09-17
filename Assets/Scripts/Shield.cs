@@ -32,16 +32,16 @@ public class Shield: MonoBehaviour
 
         if (shieldDirection == "up") {
             gameObject.transform.position = player.transform.position + new Vector3(0, 0, 1);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            gameObject.transform.rotation = Quaternion.Euler(0, 360, 0);
         } else if (shieldDirection == "down") {
             gameObject.transform.position = player.transform.position + new Vector3(0, 0, -1);
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
         } else if (shieldDirection == "left") {
             gameObject.transform.position = player.transform.position + new Vector3(-1, 0, 0);
-            gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
+            gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
         } else if (shieldDirection == "right") {
             gameObject.transform.position = player.transform.position + new Vector3(1, 0, 0);
-            gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
         }
 
         

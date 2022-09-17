@@ -13,7 +13,7 @@ public class Shield: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shield.transform.localPosition = Player.GetComponent<PositionReferences>().GetNextPosition()    ;
+        gameObject.transform.localPosition = Player.GetComponent<PositionReferences>().GetNextPosition()    ;
 
     }
 }

@@ -20,11 +20,14 @@ public class Shield: MonoBehaviour
 
         if (Input.GetKey("w")) {
             shieldDirection = "up";
-        } else if (Input.GetKey("s")) {
+        } 
+        if (Input.GetKey("s")) {
             shieldDirection = "down";
-        } else if (Input.GetKey("d")) {
+        } 
+        if (Input.GetKey("d")) {
             shieldDirection = "right";
-        } else if (Input.GetKey("a")) {
+        } 
+        if (Input.GetKey("a")) {
             shieldDirection = "left";
         }
 

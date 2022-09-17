@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     {
         controller = gameObject.AddComponent<CharacterController>();
     }
-    
+
     // Update is called once per frame
     void Update()
     {

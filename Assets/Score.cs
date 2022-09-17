@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
 
-    private int num;
+    public int num;
     //private GameObject canvas;
     private Text currentScore;
 

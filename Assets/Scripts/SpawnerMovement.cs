@@ -5,20 +5,25 @@ using UnityEngine;
 public class SpawnerMovement : MonoBehaviour
 {
     private float scaleMovement = 0.05f;
-    private Transform spawnerTransform;
+    public Transform spawnerTransform;
     private float spawnFrequency = 2.0f;
-    private LaserSpawner laserSpawner;
+    public LaserSpawner laserSpawnerScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        laserSpawnerScript = GetComponent<LaserSpawner>();
         spawnerTransform = GetComponent<Transform>();
+        StartCoroutine(Delay());
+
     }
 
-    private IEnumerator Delay()
+    public IEnumerator Delay()
     {
-        yield return new WaitForSeconds(spawnFrequency);
-        laserSpawner.SpawnLaser();
+        while (true) {
+            yield return new WaitForSeconds(spawnFrequency);
+            laserSpawnerScript.SpawnLaser();
+        }
     }
 
     void OnCollisionEnter(Collision collisionInfo)
@@ -28,15 +33,15 @@ public class SpawnerMovement : MonoBehaviour
         // }
     }
 
-    Vector3 GetSpawnerPosition()
+    bool IsInBound()
     {
-        return spawnerTransform.position;
+        return (laserSpawnerScript.tag == "SpawnerHorizontal" && -15 < spawnerTransform.position.x && spawnerTransform.position.x < 15) || ((laserSpawnerScript.tag == "SpawnerLeft" || laserSpawnerScript.tag == "SpawnerRight") && -10 < spawnerTransform.position.z && spawnerTransform.position.z < 10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (-15 < spawnerTransform.position.x && spawnerTransform.position.x < 15 && -15 < spawnerTransform.position.z && spawnerTransform.position.z < 15) {
+        if (IsInBound()) {
             spawnerTransform.position += transform.up * scaleMovement;
         } else {
             scaleMovement = scaleMovement * -1;

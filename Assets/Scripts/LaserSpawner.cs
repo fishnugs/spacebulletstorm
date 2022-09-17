@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class LaserSpawner : MonoBehaviour
 {
-    private LaserProjectile laser;
-    private SpawnerMovement spawnerMovementScript;
-
+    public GameObject laser;
+    public SpawnerMovement spawnerMovementScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnerMovementScript = GameObject.FindObjectOfType<SpawnerMovement>;
+        spawnerMovementScript = GetComponent<SpawnerMovement>();
     }
 
-    void SpawnLaser()
+    public void SpawnLaser()
     {
-        laser = GameObject.Instantiate(Resources.Load("Models/Projectile"), spawnerMovementScript.GetSpawnerPosition(), Quaternion.identity);
+        Vector3 rotDeg;
+        if (spawnerMovementScript.tag == "SpawnerLeft") {
+            rotDeg = new Vector3(0, 90, 0);
+        } else if (spawnerMovementScript.tag == "SpawnerRight") {
+            rotDeg = new Vector3(0, -90, 0);
+        } else {
+            rotDeg = new Vector3(180, 0, 0);
+        }
+
+        laser = GameObject.Instantiate(Resources.Load("Projectile"), spawnerMovementScript.spawnerTransform.position, Quaternion.Euler(rotDeg)) as GameObject;
     }
 }

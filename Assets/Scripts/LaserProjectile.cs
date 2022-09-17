@@ -16,8 +16,6 @@ public class LaserProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (-15 < laserTransform.position.x && laserTransform.position.x < 15 && -15 < laserTransform.position.z && laserTransform.position.z < 15) {
-            laserTransform.position += transform.right * scaleMovement *-1;
-        }
+        laserTransform.position += transform.forward * scaleMovement;
     }
 }
